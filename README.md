@@ -9,4 +9,4 @@ Approximately a 50% win rate for either team
 
 ## Version History
 * Version 1.0
-    * Inital release
+    * Initial release

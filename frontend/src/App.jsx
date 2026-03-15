@@ -21,11 +21,6 @@ function App() {
     fetchData();
   }, []);
 
-  function handleRules() {
-    alert('You clicked rules');
-    navigate('rules');
-  }
-
   function handleStart() {
     alert('You clicked start');
   }
@@ -49,8 +44,10 @@ function App() {
         </div>
       </section>
 
-      <button id="start" onClick={handleStart}>Start</button>
-      <button id="rules" onClick={handleRules}>Rules</button>
+      <button onClick={handleStart}>Start</button>
+      <button onClick={() => navigate('rules')}>
+        Rules
+      </button>
     </>
   )
 }

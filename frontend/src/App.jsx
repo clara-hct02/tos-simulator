@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [data, setData] = useState("")
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,16 +21,22 @@ function App() {
     fetchData();
   }, []);
 
+  function handleRules() {
+    alert('You clicked rules');
+    navigate('rules');
+  }
+
+  function handleStart() {
+    alert('You clicked start');
+  }
+
   return (
     <>
       <section id="center">
         <div className="hero">
         </div>
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+          <h1>Welcome to Town of Salem 2 Simulator</h1>
         </div>
         <button
           className="counter"
@@ -41,10 +49,8 @@ function App() {
         </div>
       </section>
 
-      <div className="ticks"></div>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <button id="start" onClick={handleStart}>Start</button>
+      <button id="rules" onClick={handleRules}>Rules</button>
     </>
   )
 }

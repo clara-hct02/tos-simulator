@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from models.game import Game
 
 app = FastAPI()
 
@@ -15,10 +16,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+game = Game()
+
 @app.get("/")
 def start():
     return {"message": "Hello from FastAPI"}
 
-@app.get("/data")
-def read_data():
-    return {"message": "Hello from FastAPI"}
+@app.post("/setup")
+def setup():
+    return {"message": "Game starting"}

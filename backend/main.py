@@ -22,6 +22,6 @@ game = Game()
 def start():
     return {"message": "Hello from FastAPI"}
 
-@app.post("/setup")
+@app.get("/setup")
 def setup():
     return {"message": "Game starting"}

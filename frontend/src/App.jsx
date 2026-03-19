@@ -9,13 +9,9 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/data");
-        const jsonData = await response.json();
-        setData(jsonData.message);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      const response = await fetch("http://localhost:8000/setup");
+      const jsonData = await response.json();
+      setData(jsonData.message);
     };
 
     fetchData();

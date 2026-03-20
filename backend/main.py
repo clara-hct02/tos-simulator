@@ -25,3 +25,7 @@ def start():
 @app.get("/setup")
 def setup():
     return {"message": "Game starting"}
+
+@app.get("/day")
+def getDay():
+    return {"message": game.day}

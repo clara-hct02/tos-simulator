@@ -3,23 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [data, setData] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8000/setup");
+      const response = await fetch("api/setup");
       const jsonData = await response.json();
       setData(jsonData.message);
     };
 
     fetchData();
   }, []);
-
-  function handleStart() {
-    alert('You clicked start');
-  }
 
   return (
     <>
@@ -29,18 +24,17 @@ function App() {
         <div>
           <h1>Welcome to Town of Salem 2 Simulator</h1>
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
         <div>
           <div>{data || "Loading..."}</div>
         </div>
       </section>
 
-      <button onClick={handleStart}>Start</button>
+      <button onClick={() => navigate('day', {
+          state: { day: 1 }
+        })}>
+        Start
+      </button>
+      
       <button onClick={() => navigate('rules')}>
         Rules
       </button>

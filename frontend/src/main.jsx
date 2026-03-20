@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Rules from './rules.jsx'
+import Day from './day.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +17,10 @@ createRoot(document.getElementById('root')).render(
             <Route
                 path="/rules"
                 element={<Rules />}
+            />
+            <Route 
+                path="/day"
+                element={<Day />}
             />
         </Routes>
     </BrowserRouter>

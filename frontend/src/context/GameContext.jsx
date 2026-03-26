@@ -1,19 +1,28 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
   const [game, setGame] = useState(null);
+  const navigate = useNavigate();
+
+  const startGame = async () => {
+    const res = await fetch("/api/setup", { method: "POST" });
+    const data = await res.json();
+    setGame(data);
+    navigate(`/${data.phase}`);
+  };
 
   const nextPhase = async () => {
     const res = await fetch("api/continue", { method: "POST" });
     const data = await res.json();
     setGame(data);
-    // navigate(`/${data.phase}`);
+    navigate(`/${data.phase}`);
   };
 
   return (
-    <GameContext.Provider value={{ game, nextPhase }}>
+    <GameContext.Provider value={{ game, nextPhase, startGame }}>
       {children}
     </GameContext.Provider>
   );

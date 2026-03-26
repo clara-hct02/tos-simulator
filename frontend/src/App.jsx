@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import { useGame } from './context/GameContext';
 
 function App() {
   const [data, setData] = useState("");
   const navigate = useNavigate();
+  const { startGame } = useGame();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,8 +21,6 @@ function App() {
   return (
     <>
       <section id="center">
-        <div className="hero">
-        </div>
         <div>
           <h1>Welcome to Town of Salem 2 Simulator</h1>
         </div>
@@ -29,9 +29,7 @@ function App() {
         </div>
       </section>
 
-      <button onClick={() => navigate('day', {
-          state: { day: 1 }
-        })}>
+      <button onClick={startGame}>
         Start
       </button>
       

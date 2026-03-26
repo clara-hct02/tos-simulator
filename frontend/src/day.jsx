@@ -1,15 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import { useGame } from './context/GameContext'
 
 const Day = () => {
-  let location = useLocation();
-
+  const { game } = useGame();
   const navigate = useNavigate();
-  const day = location.state?.day;
+  console.log(game);
     
   return (
     <div>
-      <h1>Day {day}</h1>
+      <h1>Day {game.day}</h1>
         <button onClick={() => navigate('/')}>
           Back
         </button>

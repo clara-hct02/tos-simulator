@@ -22,11 +22,11 @@ game = None
 def start():
     return {"message": "Hello from FastAPI"}
 
-@app.get("/setup")
+@app.post("/setup")
 def setup():
     global game
     game = Game()
-    return {"message": "Game starting"}
+    return {"message": "Game starting", "phase": "day", "day": 1}
 
 @app.get("/day")
 def getDay():
@@ -35,4 +35,4 @@ def getDay():
 @app.post("/continue")
 def advance_game():
     global game
-    return {"message": "continue debug"}
+    return {"message": "continue debug", "phase": "day", "day": 1}

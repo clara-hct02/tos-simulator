@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-game = Game()
+game = None
 
 @app.get("/")
 def start():
@@ -24,8 +24,15 @@ def start():
 
 @app.get("/setup")
 def setup():
+    global game
+    game = Game()
     return {"message": "Game starting"}
 
 @app.get("/day")
 def getDay():
     return {"message": game.day}
+
+@app.post("/continue")
+def advance_game():
+    global game
+    return {"message": "continue debug"}

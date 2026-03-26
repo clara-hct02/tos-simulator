@@ -5,24 +5,18 @@ import './index.css'
 import App from './App.jsx'
 import Rules from './rules.jsx'
 import Day from './day.jsx'
+import { GameProvider } from './context/GameContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-       <Routes>
-            <Route
-                path="/"
-                element={<App />}
-            />
-            <Route
-                path="/rules"
-                element={<Rules />}
-            />
-            <Route 
-                path="/day"
-                element={<Day />}
-            />
+      <GameProvider>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/day" element={<Day />} />
         </Routes>
+      </GameProvider>
     </BrowserRouter>
   </StrictMode>
 )

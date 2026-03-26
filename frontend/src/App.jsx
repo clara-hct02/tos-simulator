@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("api/setup");
+      const response = await fetch("api/");
       const jsonData = await response.json();
       setData(jsonData.message);
     };

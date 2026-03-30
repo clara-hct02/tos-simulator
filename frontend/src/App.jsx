@@ -6,7 +6,7 @@ import { useGame } from './context/GameContext';
 function App() {
   const [data, setData] = useState("");
   const navigate = useNavigate();
-  const { startGame } = useGame();
+  const { game, startGame } = useGame();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,24 +18,27 @@ function App() {
     fetchData();
   }, []);
 
+  const handleStart = async () => {
+      const data = await startGame();
+      navigate(`/${data.phase}`);
+  };
+
   return (
     <>
-      <section id="center">
-        <div>
+    <section id="center">
+      <div>
           <h1>Welcome to Town of Salem 2 Simulator</h1>
-        </div>
-        <div>
-          <div>{data || "Loading..."}</div>
-        </div>
-      </section>
+      </div>
+      <div>{data || "Loading..."}</div>
+    </section>
 
-      <button onClick={startGame}>
-        Start
-      </button>
-      
-      <button onClick={() => navigate('rules')}>
-        Rules
-      </button>
+    <button onClick={handleStart}>
+      Start
+    </button>
+    
+    <button onClick={() => navigate('rules')}>
+      Rules
+    </button>
     </>
   )
 }

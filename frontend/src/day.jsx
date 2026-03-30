@@ -4,7 +4,6 @@ import { useGame } from './context/GameContext'
 const Day = () => {
   const { game } = useGame();
   const navigate = useNavigate();
-  console.log(game);
     
   return (
     <div>

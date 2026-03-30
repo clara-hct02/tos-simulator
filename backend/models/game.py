@@ -6,7 +6,9 @@ from services import setup
 
 class Game:
     def __init__(self):
-        print("creating game")
         self.living_players = setup.setup_players()
         self.dead_players = []
         self.day = 1
+
+    def advance_day(self):
+        self.day += 1

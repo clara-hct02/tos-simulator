@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from models.game import Game
 
@@ -23,14 +23,19 @@ def start():
     return {"message": "Hello from FastAPI"}
 
 @app.post("/setup")
-def setup():
+def setup(options: dict = Body(default={})):
     global game
     game = Game()
-    return {"message": "Game starting", "phase": "day", "day": 1}
+    data = game.dayOne()
+
+    return {"message": data, "phase": "day", "day": 1}
 
 @app.get("/day")
 def getDay():
-    return {"message": game.day}
+    global game
+    data = None
+
+    return {"message": data}
 
 @app.post("/continue")
 def advance_game():

@@ -8,7 +8,11 @@ export function GameProvider({ children }) {
   const navigate = useNavigate();
 
   const startGame = async () => {
-    const res = await fetch("/api/setup", { method: "POST" });
+    const res = await fetch("/api/setup", { 
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}) 
+    });
     const data = await res.json();
     setGame(data);
     return data;

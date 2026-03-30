@@ -12,3 +12,6 @@ class Game:
 
     def advance_day(self):
         self.day += 1
+
+    def dayOne(self):
+        return "Welcome to Town of Salem! Please take your leave for tonight."

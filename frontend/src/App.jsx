@@ -6,7 +6,7 @@ import { useGame } from './context/GameContext';
 function App() {
   const [data, setData] = useState("");
   const navigate = useNavigate();
-  const { game, startGame } = useGame();
+  const { startGame } = useGame();
 
   useEffect(() => {
     const fetchData = async () => {

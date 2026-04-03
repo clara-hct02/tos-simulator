@@ -22,7 +22,7 @@ export function GameProvider({ children }) {
     const res = await fetch("api/continue", { method: "POST" });
     const data = await res.json();
     setGame(data);
-    navigate(`/${data.phase}`);
+    return data;
   };
 
   return (

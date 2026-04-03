@@ -4,12 +4,16 @@ import { useGame } from './context/GameContext';
 const Day = () => {
   const { game } = useGame();
   const navigate = useNavigate();
-
-  console.log(game);
+  const { nextPhase } = useGame();
+  
+  const handleContinue = async () => {
+      const data = await nextPhase();
+      navigate(`/${data.phase}`);
+  };
     
   return (
     <div>
-      <h1>Day {game.day}</h1>
+      <h1> {game.phase} {game.day}</h1>
         {game.message}
 
        <br></br>
@@ -17,7 +21,7 @@ const Day = () => {
           Back
         </button>
 
-        <button onClick={() => navigate('')}>
+        <button onClick={handleContinue}>
           Continue
         </button>
       </div>

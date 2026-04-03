@@ -28,7 +28,7 @@ def setup(options: dict = Body(default={})):
     game = Game()
     data = game.dayOne()
 
-    return {"message": data, "phase": "day", "day": 1}
+    return {"message": data, "phase": "Day", "day": 1}
 
 @app.get("/day")
 def getDay():
@@ -40,4 +40,4 @@ def getDay():
 @app.post("/continue")
 def advance_game():
     global game
-    return {"message": "continue debug", "phase": "day", "day": 1}
+    return {"message": "continue debug", "phase": "Day", "day": 2}

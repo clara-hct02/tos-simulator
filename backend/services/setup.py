@@ -11,7 +11,7 @@ def setup_players():
     random.shuffle(role_list)
 
     for i in range(1, 16):
-        new_player = role_list[i - 1](i)
+        new_player = role_list[i - 1](number=i)
         players.append(new_player)
 
     return players

@@ -1,11 +1,10 @@
 import { useState, createContext, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
   const [game, setGame] = useState(null);
-  const navigate = useNavigate();
+  const [gameId, setGameId] = useState(null);
 
   const startGame = async () => {
     const res = await fetch("/api/setup", { 
@@ -14,19 +13,21 @@ export function GameProvider({ children }) {
       body: JSON.stringify({}) 
     });
     const data = await res.json();
+    setGameId(data.id);
+    console.log(gameId);
     setGame(data);
     return data;
   };
 
   const nextPhase = async () => {
-    const res = await fetch("api/continue", { method: "POST" });
+    const res = await fetch(`api/continue?game_id=${gameId}`, { method: "POST" });
     const data = await res.json();
     setGame(data);
     return data;
   };
 
   return (
-    <GameContext.Provider value={{ game, nextPhase, startGame }}>
+    <GameContext.Provider value={{ game, gameId, nextPhase, startGame }}>
       {children}
     </GameContext.Provider>
   );

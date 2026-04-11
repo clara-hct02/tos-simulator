@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { useGame } from './context/GameContext';
+import { useGame } from '../src/context/GameContext';
 
-const Day = () => {
+const Voting = () => {
   const { game } = useGame();
   const navigate = useNavigate();
   const { nextPhase } = useGame();
@@ -28,4 +28,4 @@ const Day = () => {
     );
 };
 
-export default Day;
+export default Voting;

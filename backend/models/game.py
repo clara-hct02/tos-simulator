@@ -1,4 +1,4 @@
-import random
+from models.day_phase import DayPhase
 from models import player
 from models.player import Coven, Townie
 from services import setup
@@ -11,9 +11,13 @@ class Game:
         self.living_players = setup.setup_players()
         self.dead_players = []
         self.day = 1
+        self.phase = DayPhase()
 
-    def advance_day(self):
-        self.day += 1
+    def advance_phase(self):
+        if self.phase.name == "Night":
+            self.day += 1
+
+        self.phase = self.phase.next_phase()
 
     def dayOne(self):
         return "Welcome to Town of Salem! Please take your leave for tonight."

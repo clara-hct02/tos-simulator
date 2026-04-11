@@ -14,7 +14,6 @@ export function GameProvider({ children }) {
     });
     const data = await res.json();
     setGameId(data.id);
-    console.log(gameId);
     setGame(data);
     return data;
   };

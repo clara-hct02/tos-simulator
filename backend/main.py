@@ -31,7 +31,7 @@ def setup(options: dict = Body(default={})) -> GameSchema:
 
     return GameSchema(
         id=game.id,
-        phase="Day",
+        phase=game.phase.name,
         day=game.day,
         players=game.living_players,
         message=dayOneMessage

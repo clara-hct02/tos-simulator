@@ -17,7 +17,7 @@ class Game:
         if self.phase.name == "Night":
             self.day += 1
 
-        self.phase = self.phase.next_phase()
+        self.phase = self.phase.next_phase(self)
 
     def dayOne(self):
         return "Welcome to Town of Salem! Please take your leave for tonight."

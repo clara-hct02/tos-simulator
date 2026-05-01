@@ -27,27 +27,16 @@ def start():
 def setup(options: dict = Body(default={})) -> GameSchema:
     game = Game()
     games[game.id] = game
-    dayOneMessage = game.dayOne()
 
-    return GameSchema(
-        id=game.id,
-        phase=game.phase.name,
-        day=game.day,
-        players=game.living_players,
-        message=dayOneMessage
-    )
+    return GameSchema.from_game(game, [])
 
 @app.post("/continue")
 def advance_game(game_id: str) -> GameSchema:
     game = games.get(game_id)
     if not game:
         raise HTTPException(status_code=404)
+    
     game.advance_phase()
+    events = game.get_phase_data()
 
-    return GameSchema(
-        id=game.id,
-        phase=game.phase.name,
-        day=game.day,
-        players=game.living_players,
-        message="Placeholder continue info"
-    )
+    return GameSchema.from_game(game, events)

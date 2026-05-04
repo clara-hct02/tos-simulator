@@ -10,3 +10,6 @@ class DayPhase(Phase):
 
         from models.voting_phase import VotingPhase
         return VotingPhase()
+
+    def get_events(self, game):
+        return []

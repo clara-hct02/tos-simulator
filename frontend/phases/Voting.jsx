@@ -16,6 +16,12 @@ const Voting = () => {
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
+        {game.events.map((event, i) => (
+          <p key={i} className={event.type === "elimination" ? "text-red-500" : ""}>
+            {event.text}
+          </p>
+        ))}
+
        <br></br>
         <button onClick={() => navigate('/')}>
           Back

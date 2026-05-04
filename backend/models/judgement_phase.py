@@ -6,3 +6,6 @@ class JudgementPhase(Phase):
     def next_phase(self, game):
         from models.night_phase import NightPhase
         return NightPhase()
+
+    def get_events(self, game):
+        return []

@@ -6,3 +6,6 @@ class NightPhase(Phase):
     def next_phase(self, game):
         from models.day_phase import DayPhase
         return DayPhase()
+
+    def get_events(self, game):
+        return []

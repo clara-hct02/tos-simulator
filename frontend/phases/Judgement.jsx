@@ -12,17 +12,19 @@ const Judgement = () => {
   };
     
   return (
-    <div>
+    <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
-        {game.events.map((event, i) => (
-          <p key={i} className={event.type === "judgement" ? "text-red-500" : ""}>
-            {event.text}
-          </p>
-        ))}
+        <div className="events-container">
+          {game.events.map((event, i) => (
+            <div key={i} className={`event ${event.type === "judgement" ? "judgement" : ""}`}>
+              <p>{event.text}</p>
+            </div>
+          ))}
+        </div>
 
-       <br></br>
+       <div className="button-group">
         <button onClick={() => navigate('/')}>
           Back
         </button>
@@ -30,6 +32,7 @@ const Judgement = () => {
         <button onClick={handleContinue}>
           Continue
         </button>
+       </div>
       </div>
     );
 };

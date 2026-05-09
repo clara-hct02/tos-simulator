@@ -24,22 +24,24 @@ function App() {
   };
 
   return (
-    <>
-    <section id="center">
-      <div>
-          <h1>Welcome to Town of Salem 2 Simulator</h1>
-      </div>
-      <div>{data || "Loading..."}</div>
-    </section>
+    <div className="game-container">
+      <section id="center">
+        <div>
+            <h1>Welcome to Town of Salem 2 Simulator</h1>
+        </div>
+        <div>{data || "Loading..."}</div>
+      </section>
 
-    <button onClick={handleStart}>
-      Start
-    </button>
-    
-    <button onClick={() => navigate('rules')}>
-      Rules
-    </button>
-    </>
+      <div className="button-group">
+        <button onClick={handleStart}>
+          Start
+        </button>
+        
+        <button onClick={() => navigate('rules')}>
+          Rules
+        </button>
+      </div>
+    </div>
   )
 }
 

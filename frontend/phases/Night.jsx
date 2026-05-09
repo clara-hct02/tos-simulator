@@ -12,18 +12,19 @@ const Night = () => {
   };
     
   return (
-    <div>
+    <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
-       <br></br>
-        <button onClick={() => navigate('/')}>
-          Back
-        </button>
+        <div className="button-group">
+          <button onClick={() => navigate('/')}>
+            Back
+          </button>
 
-        <button onClick={handleContinue}>
-          Continue
-        </button>
+          <button onClick={handleContinue}>
+            Continue
+          </button>
+        </div>
       </div>
     );
 };

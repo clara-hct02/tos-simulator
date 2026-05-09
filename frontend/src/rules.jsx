@@ -4,12 +4,8 @@ const Rules = () => {
   const navigate = useNavigate();
     
   return (
-    <div>
+    <div className="game-container">
       <h1>Rules</h1>
-        <button onClick={() => navigate('/')}>
-          Back
-        </button>
-
         <h2>Factions</h2>
         <h3>Town</h3>
           The Town is the uninformed majority of the game. 
@@ -24,6 +20,10 @@ const Rules = () => {
         Note: This page will only include roles that are currently available within the simulator.
         <h3>Town</h3>
         <h3>Coven</h3>
+
+        <button onClick={() => navigate('/')}>
+          Back
+        </button>
       </div>
     );
 };

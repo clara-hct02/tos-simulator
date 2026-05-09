@@ -12,11 +12,11 @@ const Day = () => {
   };
     
   return (
-    <div>
+    <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
-       <br></br>
+       <div className="button-group">
         <button onClick={() => navigate('/')}>
           Back
         </button>
@@ -24,6 +24,7 @@ const Day = () => {
         <button onClick={handleContinue}>
           Continue
         </button>
+       </div>
       </div>
     );
 };

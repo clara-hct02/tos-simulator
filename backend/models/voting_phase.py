@@ -6,8 +6,12 @@ class VotingPhase(Phase):
     name = "Voting"
     
     def next_phase(self, game):
-        from models.judgement_phase import JudgementPhase
-        return JudgementPhase()
+        if self.player_on_stand:
+            from models.judgement_phase import JudgementPhase
+            return JudgementPhase(game, self.player_on_stand)
+        else:
+            from models.night_phase import NightPhase
+            return NightPhase()
 
 
     def get_events(self, game) -> list[GameEvent]:
@@ -24,19 +28,6 @@ class VotingPhase(Phase):
             ))
 
         on_stand = max(set(votes_tally), key=votes_tally.count)
-        player_on_stand = game.get_player(on_stand)
-
-        if votes_tally.count(player_on_stand) > len(game.living_players) // 2:
-            self.living_players.remove(player_on_stand)
-            events.append(GameEvent(
-                type="elimination",
-                text=f"Player {player_on_stand.number} was eliminated by the town!",
-                player_number=player_on_stand.number
-            ))
-        else:
-            events.append(GameEvent(
-                type="no_execution",
-                text="The town has decided not to execute anyone today."
-            ))
+        self.player_on_stand = game.get_player(on_stand)
 
         return events

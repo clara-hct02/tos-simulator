@@ -16,6 +16,12 @@ const Judgement = () => {
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
+        {game.events.map((event, i) => (
+          <p key={i} className={event.type === "judgement" ? "text-red-500" : ""}>
+            {event.text}
+          </p>
+        ))}
+
        <br></br>
         <button onClick={() => navigate('/')}>
           Back

@@ -24,6 +24,10 @@ class Game:
     
     def get_player(self, number: int):
         return next(p for p in self.living_players if p.number == number)
+    
+    def kill_player(self, p):
+        if p in self.living_players:
+            self.living_players.remove(p)
 
     def dayOne(self):
         return "Welcome to Town of Salem! Please take your leave for tonight."

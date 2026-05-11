@@ -52,6 +52,9 @@ class JudgementPhase(Phase):
                 type="judgement",
                 text=f"The town has voted {guilty} to {inno} to put player {self.lynched.number} to death"
             ))
+            
+            game.kill_player(self.lynched)
+
         else:
             events.append(GameEvent(
                 type="judgement",

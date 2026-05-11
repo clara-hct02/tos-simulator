@@ -8,6 +8,7 @@ class VotingPhase(Phase):
     def next_phase(self, game):
         if self.player_on_stand:
             from models.judgement_phase import JudgementPhase
+            game.remaining_trials -= 1
             return JudgementPhase(game, self.player_on_stand)
         else:
             from models.night_phase import NightPhase

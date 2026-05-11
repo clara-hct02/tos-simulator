@@ -11,8 +11,12 @@ class JudgementPhase(Phase):
         self.lynched = lynched
     
     def next_phase(self, game):
-        from models.night_phase import NightPhase
-        return NightPhase()
+        if game.remaining_trials > 0:
+            from models.voting_phase import VotingPhase
+            return VotingPhase()
+        else :
+            from models.night_phase import NightPhase
+            return NightPhase()
 
     def get_events(self, game):
         events = []

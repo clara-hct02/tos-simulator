@@ -12,10 +12,12 @@ class Game:
         self.dead_players = []
         self.day = 1
         self.phase = DayPhase()
+        self.remaining_trials = 3
 
     def advance_phase(self):
         if self.phase.name == "Night":
             self.day += 1
+            self.remaining_trials = 3
 
         self.phase = self.phase.next_phase(self)
 

@@ -16,6 +16,14 @@ const Night = () => {
       <h1> {game.phase} {game.day}</h1>
         {game.message}
 
+        <div className="events-container">
+          {game.events.map((event, i) => (
+            <div key={i} className="event">
+              <p>{event.text}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="button-group">
           <button onClick={() => navigate('/')}>
             Back

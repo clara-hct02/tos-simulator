@@ -24,15 +24,15 @@ const Judgement = () => {
           ))}
         </div>
 
-       <div className="button-group">
-        <button onClick={() => navigate('/')}>
-          Back
-        </button>
+        <div className="button-group">
+          <button onClick={() => navigate('/')}>
+            Back
+          </button>
 
-        <button onClick={handleContinue}>
-          Continue
-        </button>
-       </div>
+          <button onClick={handleContinue}>
+            Continue
+          </button>
+        </div>
       </div>
     );
 };

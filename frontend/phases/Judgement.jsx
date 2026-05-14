@@ -18,7 +18,7 @@ const Judgement = () => {
 
         <div className="events-container">
           {game.events.map((event, i) => (
-            <div key={i} className={`event ${event.type === "judgement" ? "judgement" : ""}`}>
+            <div key={i} className="event">
               <p>{event.text}</p>
             </div>
           ))}

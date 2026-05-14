@@ -18,7 +18,7 @@ const Voting = () => {
 
         <div className="events-container">
           {game.events.map((event, i) => (
-            <p key={i} className={`event ${event.type === "elimination" ? "text-red-500" : ""}`}>
+            <p key={i} className="event">
               {event.text}
             </p>
           ))}

@@ -1,5 +1,5 @@
 from models.phase import Phase
-from models.player import Player
+from models.player import Player, Townie
 from schemas.game import GameEvent
 import random
 
@@ -58,6 +58,13 @@ class JudgementPhase(Phase):
             ))
             
             game.kill_player(self.lynched)
+
+            events.append(GameEvent(
+                type="reveal",
+                text=f"{self.lynched.number} was an innocent town member!" if isinstance(self.lynched, Townie) 
+                else f"{self.lynched.number} was a member of the coven!"
+            ))
+
 
         else:
             events.append(GameEvent(

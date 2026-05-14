@@ -36,6 +36,7 @@ class Coven(Player):
 
 # Basic healer role
 class Cleric(Townie):
+    role_name: str = "Cleric"
     alignment: str = "tp"
     priority: int = 2
 
@@ -45,6 +46,7 @@ class Cleric(Townie):
 
 # Stops their target from performing their night action
 class Tavern(Townie):
+    role_name: str = "Tavern Keeper"
     alignment: str = "ts"
     priority: int = 1
 
@@ -53,6 +55,7 @@ class Tavern(Townie):
 
 
 class Sheriff(Townie):
+    role_name: str = "Sheriff"
     alignment: str = "ti"
     priority: int = 3
 
@@ -62,6 +65,7 @@ class Sheriff(Townie):
 
 # Checks 2 roles and knows if the players are on the same team
 class Seer(Townie):
+    role_name: str = "Seer"
     alignment: str = "ti"
 
     def night_action(self, target1, target2):
@@ -73,6 +77,7 @@ class Seer(Townie):
 
 # Mayor Class
 class Mayor(Townie):
+    role_name: str = "Mayor"
     alignment: str = "tpow"
 
     def day_action(self):

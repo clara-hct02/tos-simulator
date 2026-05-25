@@ -11,6 +11,7 @@ class JudgementPhase(Phase):
         self.lynched = lynched
     
     def next_phase(self, game):
+        print(game.remaining_trials)
         if game.remaining_trials > 0:
             from models.voting_phase import VotingPhase
             return VotingPhase()
@@ -58,6 +59,7 @@ class JudgementPhase(Phase):
             ))
             
             game.kill_player(self.lynched)
+            game.remaining_trials = 0
 
             events.append(GameEvent(
                 type="reveal",

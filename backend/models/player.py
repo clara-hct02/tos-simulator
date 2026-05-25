@@ -17,6 +17,7 @@ class Player(BaseModel):
 
 # Town Members
 class Townie(Player):
+    role_name: str = "Pilgrim"
     attack: int = 0
 
     def hangman(self):
@@ -26,6 +27,7 @@ class Townie(Player):
 
 # Coven Members
 class Coven(Player):
+    role_name: str = "Covenite"
     necro: bool = False
     attack: int = 0
 

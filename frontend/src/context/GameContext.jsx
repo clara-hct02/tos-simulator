@@ -6,11 +6,11 @@ export function GameProvider({ children }) {
   const [game, setGame] = useState(null);
   const [gameId, setGameId] = useState(null);
 
-  const startGame = async () => {
+  const startGame = async (names = []) => {
     const res = await fetch("/api/setup", { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({}) 
+      body: JSON.stringify({ names }) 
     });
     const data = await res.json();
     setGameId(data.id);

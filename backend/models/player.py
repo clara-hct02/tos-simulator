@@ -2,6 +2,7 @@ from models import actions
 from pydantic import BaseModel
 
 class Player(BaseModel):
+    name: str
     number: int
     votes: int = 1
     defense: int = 0

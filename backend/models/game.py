@@ -6,9 +6,9 @@ from uuid import uuid4
 
 
 class Game:
-    def __init__(self):
+    def __init__(self, names):
         self.id = str(uuid4())
-        self.living_players = setup.setup_players()
+        self.living_players = setup.setup_players(names)
         self.dead_players = []
         self.day = 1
         self.phase = DayPhase()

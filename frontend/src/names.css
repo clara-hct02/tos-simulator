@@ -1,0 +1,64 @@
+.names-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.name-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.name-input-group label {
+  font-size: 0.9rem;
+  color: #752b0b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.name-input-group input {
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 2px solid #5a4a3a;
+  color: #2a2a2a;
+  font-family: 'Georgia', serif;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.name-input-group input::placeholder {
+  color: #9a8570;
+  opacity: 0.7;
+}
+
+.name-input-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .names-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .start-button {
+    padding: 0.875rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .names-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .start-button {
+    width: 100%;
+  }
+}

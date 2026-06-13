@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import './names.css';
 import { useGame } from './context/GameContext';
 
 function App() {
   const [data, setData] = useState("");
   const navigate = useNavigate();
   const { startGame } = useGame();
+  const inputRefs = useRef([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,8 +21,12 @@ function App() {
   }, []);
 
   const handleStart = async () => {
-      const data = await startGame();
-      navigate(`/${data.phase}`);
+    const names = inputRefs.current.map((input, index) => 
+      input.value || `Player ${index + 1}`
+    );
+    
+    const data = await startGame(names);
+    navigate(`/${data.phase}`);
   };
 
   return (
@@ -31,6 +37,19 @@ function App() {
         </div>
         <div>{data || "Loading..."}</div>
       </section>
+
+      <div className="names-grid">
+        {Array.from({ length: 15 }).map((_, index) => (
+          <div key={index} className="name-input-group">
+            <label>{index + 1}</label>
+            <input
+              ref={(el) => inputRefs.current[index] = el}
+              type="text"
+              placeholder={`Player ${index + 1}`}
+            />
+          </div>
+        ))}
+      </div>
 
       <div className="button-group">
         <button onClick={handleStart}>

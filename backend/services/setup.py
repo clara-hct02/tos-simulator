@@ -7,8 +7,6 @@ def setup_players(names):
         player.Townie, player.Townie, player.Townie]
     
     players = []
-    print(names)
-    print("names")
     
     random.shuffle(role_list)
 

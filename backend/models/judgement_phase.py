@@ -11,7 +11,6 @@ class JudgementPhase(Phase):
         self.lynched = lynched
     
     def next_phase(self, game):
-        print(game.remaining_trials)
         if game.remaining_trials > 0:
             from models.voting_phase import VotingPhase
             return VotingPhase()
@@ -26,7 +25,7 @@ class JudgementPhase(Phase):
 
         events.append(GameEvent(
                 type="judgement",
-                text=f"The town is now voting on the fate of player {self.lynched.number}"
+                text=f"The town is now voting on the fate of player {self.lynched.name}"
             ))
 
         guilty_weight = self.lynched.suspicion
@@ -49,13 +48,13 @@ class JudgementPhase(Phase):
             
             events.append(GameEvent(
                 type="judgement",
-                text=f"Player {p.number} {choice}"
+                text=f"{p.name} {choice}"
             ))
 
         if guilty > inno:
             events.append(GameEvent(
                 type="judgement",
-                text=f"The town has voted {guilty} to {inno} to put player {self.lynched.number} to death"
+                text=f"The town has voted {guilty} to {inno} to put player {self.lynched.name} to death"
             ))
             
             game.kill_player(self.lynched)
@@ -63,15 +62,15 @@ class JudgementPhase(Phase):
 
             events.append(GameEvent(
                 type="reveal",
-                text=f"{self.lynched.number} was an innocent town member!" if isinstance(self.lynched, Townie) 
-                else f"{self.lynched.number} was a member of the coven!"
+                text=f"{self.lynched.name} was an innocent town member!" if isinstance(self.lynched, Townie) 
+                else f"{self.lynched.name} was a member of the coven!"
             ))
 
 
         else:
             events.append(GameEvent(
                 type="judgement",
-                text=f"The town has voted {inno} to {guilty} to pardon player {self.lynched.number}"
+                text=f"The town has voted {inno} to {guilty} to pardon {self.lynched.name}"
             ))
         
         return events

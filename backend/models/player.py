@@ -22,7 +22,7 @@ class Townie(Player):
     attack: int = 0
 
     def hangman(self):
-        print(f"Player {self.number} has dishonoured the town and will be put to death!")
+        print(f"{self.name} has dishonoured the town and will be put to death!")
         self.alive = False
 
 
@@ -84,7 +84,7 @@ class Mayor(Townie):
     alignment: str = "tpow"
 
     def day_action(self):
-        print("Player {self.number} has revealed themselves as the mayor!")
+        print("{self.name} has revealed themselves as the mayor!")
         self.votes += 2
         self.suspicion = 0.0
 

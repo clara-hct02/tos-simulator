@@ -20,12 +20,12 @@ class NightPhase(Phase):
 
         events.append(GameEvent(
             type="night",
-            text=(f"Player {coven_kill.number} has been killed by the coven!")
+            text=(f"{coven_kill.name} has been killed by the coven!")
         )) 
 
         events.append(GameEvent(
             type="reveal",
-            text=(f"Player {coven_kill.number} was a {coven_kill.role_name}!")
+            text=(f"{coven_kill.name} was a {coven_kill.role_name}!")
         ))
 
         return events

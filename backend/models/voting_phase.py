@@ -24,7 +24,7 @@ class VotingPhase(Phase):
             votes_tally.append(voted.number)
             events.append(GameEvent(
                 type="vote",
-                text=f"Player {player.number} voted for Player {voted.number}",
+                text=f"{player.name} voted for {voted.name}",
                 player_number=player.number
             ))
 

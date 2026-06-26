@@ -25,7 +25,6 @@ def start():
 
 @app.post("/setup")
 def setup(names: list = Body(..., embed=True), options: dict = Body(default={})) -> GameSchema:
-    print(names)
     game = Game(names)
     games[game.id] = game
 

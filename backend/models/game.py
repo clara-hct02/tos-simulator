@@ -31,5 +31,20 @@ class Game:
         if p in self.living_players:
             self.living_players.remove(p)
 
+    def check_win(self):
+        living_town = 0
+        living_coven = 0
+
+        for player in self.living_players:
+            if isinstance(player, Townie):
+                living_town += 1
+            else:
+                living_coven += 1
+
+        if living_town == 0 or living_coven == 0:
+            return True
+
+        return False
+
     def dayOne(self):
         return "Welcome to Town of Salem! Please take your leave for tonight."

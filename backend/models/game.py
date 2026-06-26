@@ -13,6 +13,8 @@ class Game:
         self.day = 1
         self.phase = DayPhase()
         self.remaining_trials = 3
+        self.winner = None
+        self.is_over = False
 
     def advance_phase(self):
         if self.phase.name == "Night":
@@ -31,6 +33,8 @@ class Game:
         if p in self.living_players:
             self.living_players.remove(p)
 
+        self.check_win()
+
     def check_win(self):
         living_town = 0
         living_coven = 0
@@ -41,7 +45,14 @@ class Game:
             else:
                 living_coven += 1
 
-        if living_town == 0 or living_coven == 0:
+        if living_town == 0:
+            self.is_over = True
+            self.winner = "Town"
+            return True
+        
+        elif living_coven == 0:
+            self.is_over = True
+            self.winner = "Coven"
             return True
 
         return False

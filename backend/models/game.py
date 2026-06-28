@@ -24,6 +24,9 @@ class Game:
         self.phase = self.phase.next_phase(self)
 
     def get_phase_data(self):
+        if self.is_over:
+            return []
+
         return self.phase.get_events(self)
     
     def get_player(self, number: int):
@@ -47,12 +50,12 @@ class Game:
 
         if living_town == 0:
             self.is_over = True
-            self.winner = "Town"
+            self.winner = "Coven"
             return True
         
         elif living_coven == 0:
             self.is_over = True
-            self.winner = "Coven"
+            self.winner = "Town"
             return True
 
         return False

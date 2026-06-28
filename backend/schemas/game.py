@@ -20,6 +20,8 @@ class GameSchema(BaseModel):
             phase=game.phase.name,
             day=game.day,
             players=game.living_players,
+            isOver=game.is_over,
+            winner=game.winner,
             message="Placeholder continue info",
             events=events
         )

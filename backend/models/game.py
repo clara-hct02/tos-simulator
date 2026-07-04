@@ -13,7 +13,7 @@ class Game:
         self.day = 1
         self.phase = DayPhase()
         self.remaining_trials = 3
-        self.winner = None
+        self.winner = ""
         self.is_over = False
 
     def advance_phase(self):
@@ -49,11 +49,13 @@ class Game:
                 living_coven += 1
 
         if living_town == 0:
+            print("coven win")
             self.is_over = True
             self.winner = "Coven"
             return True
         
         elif living_coven == 0:
+            print("town win")
             self.is_over = True
             self.winner = "Town"
             return True

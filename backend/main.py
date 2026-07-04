@@ -39,4 +39,6 @@ def advance_game(game_id: str) -> GameSchema:
     game.advance_phase()
     events = game.get_phase_data()
 
+    print(events)
+
     return GameSchema.from_game(game, events)

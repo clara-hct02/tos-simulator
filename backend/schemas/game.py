@@ -12,6 +12,8 @@ class GameSchema(BaseModel):
     players: list
     message: str
     events: List[GameEvent] = []
+    isOver: bool
+    winner: str
 
     @classmethod
     def from_game(cls, game, events):

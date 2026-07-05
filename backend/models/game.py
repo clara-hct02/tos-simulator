@@ -49,13 +49,11 @@ class Game:
                 living_coven += 1
 
         if living_town == 0:
-            print("coven win")
             self.is_over = True
             self.winner = "Coven"
             return True
         
         elif living_coven == 0:
-            print("town win")
             self.is_over = True
             self.winner = "Town"
             return True

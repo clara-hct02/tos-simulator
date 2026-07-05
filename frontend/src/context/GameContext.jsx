@@ -25,10 +25,8 @@ export function GameProvider({ children }) {
     const data = await res.json();
     setGame(data);
 
-    console.log(data);
-
-    if (data.is_over) {
-      setIsGameOver = True;
+    if (data.isOver) {
+      setIsGameOver = true;
       setWinner(data.winner);
       console.log("game is over");
     }

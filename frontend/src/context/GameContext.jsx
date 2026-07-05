@@ -4,6 +4,8 @@ const GameContext = createContext();
 
 export function GameProvider({ children }) {
   const [game, setGame] = useState(null);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [winner, setWinner] = useState(null);
   const [gameId, setGameId] = useState(null);
 
   const startGame = async (names = []) => {
@@ -22,11 +24,18 @@ export function GameProvider({ children }) {
     const res = await fetch(`api/continue?game_id=${gameId}`, { method: "POST" });
     const data = await res.json();
     setGame(data);
+
+    if (data.isOver) {
+      setIsGameOver = true;
+      setWinner(data.winner);
+      console.log("game is over");
+    }
+
     return data;
   };
 
   return (
-    <GameContext.Provider value={{ game, gameId, nextPhase, startGame }}>
+    <GameContext.Provider value={{ game, gameId, isGameOver, winner, nextPhase, startGame }}>
       {children}
     </GameContext.Provider>
   );

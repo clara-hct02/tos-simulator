@@ -10,7 +10,6 @@ class GameSchema(BaseModel):
     phase: str
     day: int
     players: list
-    message: str
     events: List[GameEvent] = []
     isOver: bool
     winner: str
@@ -24,6 +23,5 @@ class GameSchema(BaseModel):
             players=game.living_players,
             isOver=game.is_over,
             winner=game.winner,
-            message="Placeholder continue info",
             events=events
         )

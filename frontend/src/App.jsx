@@ -5,7 +5,6 @@ import './names.css';
 import { useGame } from './context/GameContext';
 
 function App() {
-  const [data, setData] = useState("");
   const navigate = useNavigate();
   const { startGame } = useGame();
   const inputRefs = useRef([]);
@@ -14,7 +13,6 @@ function App() {
     const fetchData = async () => {
       const response = await fetch("api/");
       const jsonData = await response.json();
-      setData(jsonData.message);
     };
 
     fetchData();
@@ -35,7 +33,6 @@ function App() {
         <div>
             <h1>Welcome to Town of Salem 2 Simulator</h1>
         </div>
-        <div>{data || "Loading..."}</div>
       </section>
 
       <div className="names-grid">

@@ -3,7 +3,7 @@ import { useGame } from '../src/context/GameContext';
 import { useEffect } from 'react';
 
 const Judgement = () => {
-  const { game } = useGame();
+  const { game, isGameOver, winner  } = useGame();
   const navigate = useNavigate();
   const { nextPhase } = useGame();
   
@@ -22,7 +22,6 @@ const Judgement = () => {
   return (
     <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
-        {game.message}
 
         <div className="events-container">
           {game.events.map((event, i) => (

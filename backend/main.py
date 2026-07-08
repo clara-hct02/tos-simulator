@@ -21,7 +21,7 @@ games: dict[str, Game] = {}
 
 @app.get("/")
 def start():
-    return {"message": "Hello from FastAPI"}
+    return {}
 
 @app.post("/setup")
 def setup(names: list = Body(..., embed=True), options: dict = Body(default={})) -> GameSchema:

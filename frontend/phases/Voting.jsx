@@ -14,7 +14,6 @@ const Voting = () => {
   return (
     <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
-        {game.message}
 
         <div className="events-container">
           {game.events.map((event, i) => (

@@ -1,5 +1,4 @@
 from models.day_phase import DayPhase
-from models import player
 from models.player import Coven, Townie
 from services import setup
 from uuid import uuid4

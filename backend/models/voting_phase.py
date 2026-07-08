@@ -20,7 +20,8 @@ class VotingPhase(Phase):
         votes_tally = []
 
         for player in game.living_players:
-            voted = random.choice(game.living_players)
+            other_players = [p for p in game.living_players if p != player]
+            voted = random.choice(other_players)
             votes_tally.append(voted.number)
             events.append(GameEvent(
                 type="vote",

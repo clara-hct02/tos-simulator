@@ -14,7 +14,6 @@ const Day = () => {
   return (
     <div className="game-container">
       <h1> {game.phase} {game.day}</h1>
-        {game.message}
 
        <div className="button-group">
         <button onClick={() => navigate('/')}>

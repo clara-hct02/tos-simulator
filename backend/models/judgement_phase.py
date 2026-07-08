@@ -25,7 +25,7 @@ class JudgementPhase(Phase):
 
         events.append(GameEvent(
                 type="judgement",
-                text=f"The town is now voting on the fate of player {self.lynched.name}"
+                text=f"The town is now voting on the fate of {self.lynched.name}"
             ))
 
         guilty_weight = self.lynched.suspicion
@@ -54,7 +54,7 @@ class JudgementPhase(Phase):
         if guilty > inno:
             events.append(GameEvent(
                 type="judgement",
-                text=f"The town has voted {guilty} to {inno} to put player {self.lynched.name} to death"
+                text=f"The town has voted {guilty} to {inno} to put {self.lynched.name} to death"
             ))
             
             game.kill_player(self.lynched)

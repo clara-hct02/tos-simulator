@@ -15,7 +15,7 @@ const Night = () => {
   useEffect(() => {
     if (isGameOver) {
       console.log("game over");
-      navigate(`/Win/${winner}`);
+      navigate(`/Win`);
     }
   }, [isGameOver, winner, navigate]);
     

@@ -26,9 +26,8 @@ export function GameProvider({ children }) {
     setGame(data);
 
     if (data.isOver) {
-      setIsGameOver = true;
+      setIsGameOver(true);
       setWinner(data.winner);
-      console.log("game is over");
     }
 
     return data;

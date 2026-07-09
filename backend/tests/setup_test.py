@@ -42,6 +42,10 @@ class TestWinConditions:
             assert player.name == self.names[i]
             assert player.votes == 1
             assert player.defense == 0
-            assert player.suspicion == 0.3
             assert not player.blocked
+
+            if isinstance(player, Townie):
+                assert player.suspicion == 0.3
+            else:
+                assert player.suspicion == 0.4
     

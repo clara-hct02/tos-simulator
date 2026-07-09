@@ -29,8 +29,8 @@ class JudgementPhase(Phase):
             ))
 
         guilty_weight = self.lynched.suspicion
-        innocent_weight = (1 - guilty_weight) * 0.6
-        abstain_weight = (1 - guilty_weight) * 0.4
+        innocent_weight = (1 - guilty_weight) * 0.7
+        abstain_weight = (1 - guilty_weight) * 0.3
 
         weights = [innocent_weight, guilty_weight, abstain_weight]
         guilty = 0
@@ -62,12 +62,12 @@ class JudgementPhase(Phase):
 
             events.append(GameEvent(
                 type="reveal",
-                text=f"{self.lynched.name} was an innocent town member!" if isinstance(self.lynched, Townie) 
-                else f"{self.lynched.name} was a member of the coven!"
+                text=f"{self.lynched.name} was a {self.lynched.role_name}!"
             ))
 
 
         else:
+            self.lynched.suspicion += 0.1
             events.append(GameEvent(
                 type="judgement",
                 text=f"The town has voted {inno} to {guilty} to pardon {self.lynched.name}"

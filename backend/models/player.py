@@ -31,7 +31,7 @@ class Coven(Player):
     role_name: str = "Covenite"
     necro: bool = False
     attack: int = 0
-    suspicion: float = 0.4
+    suspicion: float = 0.5
 
     def night_action(self, target):
         if self.necro:

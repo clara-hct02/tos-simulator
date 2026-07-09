@@ -34,6 +34,7 @@ class Game:
     def kill_player(self, p):
         if p in self.living_players:
             self.living_players.remove(p)
+            self.dead_players.append(p)
 
         self.check_win()
 

@@ -18,7 +18,7 @@ class JudgementPhase(Phase):
             from models.night_phase import NightPhase
             return NightPhase()
 
-    def get_events(self, game):
+    def get_events(self, game, vote_choices = None):
         events = []
 
         verdict = [' voted innocent', ' voted guilty', ' abstained']
@@ -36,11 +36,22 @@ class JudgementPhase(Phase):
         guilty = 0
         inno = 0
 
+        if vote_choices is None:
+            vote_choices = [
+                random.choices(verdict, weights=weights, k=1)[0]
+                for p in game.living_players
+                if self.lynched.number != p.number
+            ]
+
+        i = 0
+
         for p in game.living_players:
             if self.lynched.number == p.number:
                 continue
 
-            choice = random.choices(verdict, weights=weights, k=1)[0]
+            choice = vote_choices[i]
+            i += 1
+
             if choice == ' voted innocent':
                 inno += 1
             if choice == ' voted guilty':

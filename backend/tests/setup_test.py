@@ -47,5 +47,5 @@ class TestWinConditions:
             if isinstance(player, Townie):
                 assert player.suspicion == 0.3
             else:
-                assert player.suspicion == 0.4
+                assert player.suspicion == 0.5
     

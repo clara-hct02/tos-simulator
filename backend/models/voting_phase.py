@@ -18,9 +18,13 @@ class VotingPhase(Phase):
     def get_events(self, game) -> list[GameEvent]:
         events = []
         votes_tally = []
-
+        
         for player in game.living_players:
             other_players = [p for p in game.living_players if p != player]
+            weights = [p.suspicion for p in game.living_players if p != player]
+
+            random.choices(other_players, weights=weights, k=1)[0]
+
             voted = random.choice(other_players)
             votes_tally.append(voted.number)
             events.append(GameEvent(

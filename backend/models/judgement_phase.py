@@ -37,11 +37,7 @@ class JudgementPhase(Phase):
         inno = 0
 
         if vote_choices is None:
-            vote_choices = [
-                random.choices(verdict, weights=weights, k=1)[0]
-                for p in game.living_players
-                if self.lynched.number != p.number
-            ]
+            vote_choices = random.choices(verdict, weights=weights, k=len(game.living_players) - 1)
 
         i = 0
 

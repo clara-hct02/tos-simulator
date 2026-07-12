@@ -14,9 +14,12 @@ export function GameProvider({ children }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ names }) 
     });
+
     const data = await res.json();
     setGameId(data.id);
     setGame(data);
+    setIsGameOver(false);
+    setWinner(null);
     return data;
   };
 

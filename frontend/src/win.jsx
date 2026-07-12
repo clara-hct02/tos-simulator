@@ -12,7 +12,7 @@ const Win = () => {
 
         <div className="button-group">
           <button onClick={() => navigate('/')}>
-            Back
+            Restart
           </button>
 
         </div>

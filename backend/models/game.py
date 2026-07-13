@@ -59,6 +59,3 @@ class Game:
             return True
 
         return False
-
-    def dayOne(self):
-        return "Welcome to Town of Salem! Please take your leave for tonight."

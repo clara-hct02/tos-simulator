@@ -28,7 +28,9 @@ def setup(names: list = Body(..., embed=True), options: dict = Body(default={}))
     game = Game(names)
     games[game.id] = game
 
-    return GameSchema.from_game(game, [])
+    events = game.get_phase_data()
+
+    return GameSchema.from_game(game, events)
 
 @app.post("/continue")
 def advance_game(game_id: str) -> GameSchema:

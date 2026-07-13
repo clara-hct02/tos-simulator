@@ -1,4 +1,5 @@
 from models.phase import Phase
+from schemas.game import GameEvent
 
 class DayPhase(Phase):
     name = "Day"
@@ -12,4 +13,17 @@ class DayPhase(Phase):
         return VotingPhase()
 
     def get_events(self, game):
-        return []
+        events = []
+
+        if game.day == 1:
+            events.append(GameEvent(
+                type="day",
+                text="Welcome to Town of Salem! Please take your leave for tonight."
+            ))
+        else:
+            events.append(GameEvent(
+                type="day",
+                text="The town begins discussing what happened last night."
+            ))
+            
+        return events

@@ -36,6 +36,9 @@ class Game:
             self.living_players.remove(p)
             self.dead_players.append(p)
 
+            p.dead_during_phase = "Night" if self.phase.name == "Night" else "Day"
+            p.dead_during_day = self.day
+
         self.check_win()
 
     def check_win(self):

@@ -8,6 +8,8 @@ class Player(BaseModel):
     defense: int = 0
     suspicion: float = 0.3
     blocked: bool = False
+    dead_during_phase: str = ""
+    dead_during_day: int = 0
 
     def night_action(self, *args):
         pass

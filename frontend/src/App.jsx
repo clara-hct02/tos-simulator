@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import './names.css';
@@ -9,22 +9,13 @@ function App() {
   const { startGame } = useGame();
   const inputRefs = useRef([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("api/");
-      const jsonData = await response.json();
-    };
-
-    fetchData();
-  }, []);
-
   const handleStart = async () => {
     const names = inputRefs.current.map((input, index) => 
       input.value || `Player ${index + 1}`
     );
     
-    const data = await startGame(names);
-    navigate(`/${data.phase}`);
+    await startGame(names);
+    navigate('/game');
   };
 
   return (

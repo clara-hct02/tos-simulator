@@ -24,7 +24,7 @@ export function GameProvider({ children }) {
   };
 
   const nextPhase = async () => {
-    const res = await fetch(`api/continue?game_id=${gameId}`, { method: "POST" });
+    const res = await fetch(`/api/continue?game_id=${gameId}`, { method: "POST" });
     const data = await res.json();
     setGame(data);
 
@@ -36,8 +36,15 @@ export function GameProvider({ children }) {
     return data;
   };
 
+  const resetGame = () => {
+    setGame(null);
+    setGameId(null);
+    setIsGameOver(false);
+    setWinner(null);
+  };
+
   return (
-    <GameContext.Provider value={{ game, gameId, isGameOver, winner, nextPhase, startGame }}>
+    <GameContext.Provider value={{ game, gameId, isGameOver, winner, nextPhase, startGame, resetGame }}>
       {children}
     </GameContext.Provider>
   );

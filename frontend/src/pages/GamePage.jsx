@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 import { DayUI } from '../phases/DayUI';
@@ -10,6 +10,18 @@ import { WinUI } from '../phases/WinUI';
 function GamePage() {
   const { game, nextPhase, resetGame } = useGame();
   const navigate = useNavigate();
+  const [seenFinalPhase, setSeenFinalPhase] = useState(false);
+
+  const handleContinue = () => {
+    if (game.isOver && seenFinalPhase) {
+      resetGame();
+      navigate('/');
+    } else if (game.isOver) {
+      setSeenFinalPhase(true);
+    } else {
+      nextPhase();
+    }
+  };
 
   useEffect(() => {
     if (!game) {
@@ -21,19 +33,20 @@ function GamePage() {
     return null;
   }
 
-  if (game.isOver) {
+  const props = { game, onContinue: handleContinue};
+
+  if (game.isOver && seenFinalPhase) {
     return (
       <WinUI
         game={game}
         onRestart={() => {
+          setSeenFinalPhase(false);
           resetGame();
           navigate('/');
         }}
       />
     );
   }
-
-  const props = { game, onContinue: nextPhase };
 
   switch (game.phase.toLowerCase()) {
     case 'day':

@@ -74,3 +74,19 @@ class TestWinConditions:
         assert not isOver
         assert not game.is_over
         assert game.winner == ""
+
+    def test_get_stats(self, mock_game_state):
+        game = mock_game_state
+
+        game.living_players = [
+            Townie(number=3, name="Player 3")
+        ]
+
+        game.dead_players = [
+            Coven(number=1, name="Player 1", dead_during_phase="Judgement", dead_during_day=2),
+            Townie(number=2, name="Player 2", dead_during_phase="Night", dead_during_day=1)
+        ]
+
+        stats = game.get_stats()
+
+        assert len(stats) == 3

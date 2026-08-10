@@ -1,5 +1,6 @@
 from models.day_phase import DayPhase
 from models.player import Coven, Townie
+from schemas.game import PlayerStat
 from services import setup
 from uuid import uuid4
 
@@ -62,3 +63,18 @@ class Game:
             return True
 
         return False
+
+    def get_stats(self):
+        stats = []
+
+        all_players = self.living_players + self.dead_players
+
+        for player in all_players:
+            stats.append(PlayerStat(
+                name=player.name,
+                number=player.number,
+                dead_during_phase=player.dead_during_phase,
+                dead_during_day=player.dead_during_day
+            ))
+        
+        return stats

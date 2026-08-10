@@ -5,6 +5,12 @@ class GameEvent(BaseModel):
     type: str
     text: str
 
+class PlayerStat(BaseModel):
+    name: str
+    number: int
+    dead_during_phase: str
+    dead_during_day: int
+
 class GameSchema(BaseModel):
     id: str
     phase: str

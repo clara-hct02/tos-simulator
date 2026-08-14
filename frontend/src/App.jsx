@@ -47,6 +47,10 @@ function App() {
         <button onClick={() => navigate('rules')}>
           Rules
         </button>
+
+        <button onClick={() => navigate('about')}>
+          About
+        </button>
       </div>
     </div>
   )
